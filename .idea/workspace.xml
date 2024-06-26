@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a0c4cf53-b776-4189-969f-09f59ea1aa1b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../todo-app/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../todo-app/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../todo-app/.idea/todo-app.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../todo-app/client" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../todo-app/client/src/components/TodoItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../todo-app/client/src/components/TodoList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../todo-app/client/src/input.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../todo-app/client/src/pages/HomePage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../todo-app/client/src/pages/LogInPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../todo-app/server/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../todo-app/server/models/Todo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../todo-app/server/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../todo-app/server/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../todo-app/server/routes/todoRoutes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../todo-app/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../todo-app/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../todo-app/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../todo-app/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../todo-app/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../todo-app/client/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../todo-app/client/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../todo-app/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../todo-app/client/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../todo-app/client/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../todo-app/client/src/reportWebVitals.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../todo-app/client/src/setupTests.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../todo-app/client" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2iBlwUYYYn8j6z7MGA8vJDpzl5T" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a0c4cf53-b776-4189-969f-09f59ea1aa1b" name="Changes" comment="" />
+      <created>1718972090358</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1718972090358</updated>
+      <workItem from="1718972091648" duration="1892000" />
+      <workItem from="1719101168765" duration="14679000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

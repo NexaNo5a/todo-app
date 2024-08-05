@@ -4,30 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0c4cf53-b776-4189-969f-09f59ea1aa1b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../todo-app/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../todo-app/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../todo-app/.idea/todo-app.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../todo-app/client" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../todo-app/client/src/components/TodoItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../todo-app/client/src/components/TodoList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../todo-app/client/src/input.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../todo-app/client/src/pages/HomePage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../todo-app/client/src/pages/LogInPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../todo-app/server/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../todo-app/server/models/Todo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../todo-app/server/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../todo-app/server/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../todo-app/server/routes/todoRoutes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../todo-app/server/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../todo-app/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../todo-app/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../todo-app/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../todo-app/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../todo-app/client/src/App.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../todo-app/client/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../todo-app/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../todo-app/client/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../todo-app/client/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../todo-app/client/src/reportWebVitals.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../todo-app/client/src/setupTests.js" beforeDir="false" />
+    <list default="true" id="9349748d-d352-47c5-a8a1-ca0f420b5c1a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/api/config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/api/todoApi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/api/userApi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/SignUpPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/routes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/LogInPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/LogInPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/Todo.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Todo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/todoRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/todoRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,15 +42,16 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../todo-app/client" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 6
 }</component>
-  <component name="ProjectId" id="2iBlwUYYYn8j6z7MGA8vJDpzl5T" />
+  <component name="ProjectId" id="2iOVZCs10RfGMkZ91N66gwW3KDd" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -58,31 +59,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.install -g nodemon.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client" />
+      <recent name="$PROJECT_DIR$/client/public" />
+      <recent name="$PROJECT_DIR$/client/src" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a0c4cf53-b776-4189-969f-09f59ea1aa1b" name="Changes" comment="" />
-      <created>1718972090358</created>
+      <changelist id="9349748d-d352-47c5-a8a1-ca0f420b5c1a" name="Changes" comment="" />
+      <created>1719361663912</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1718972090358</updated>
-      <workItem from="1718972091648" duration="1892000" />
-      <workItem from="1719101168765" duration="14679000" />
+      <updated>1719361663912</updated>
+      <workItem from="1719361665282" duration="3663000" />
+      <workItem from="1719754085580" duration="7975000" />
+      <workItem from="1720013976157" duration="20173000" />
+      <workItem from="1722311127754" duration="3185000" />
     </task>
     <servers />
   </component>

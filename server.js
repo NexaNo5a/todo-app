@@ -5,12 +5,12 @@ const bodyParser = require('body-parser');
 const todoRoutes = require('./routes/todoRoutes');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 app.use(cors());
 app.use(bodyParser.json());
-
-mongoose.connect('mongodb://localhost:27017/todoapp', {useNewUrlParser: true, useUnifiedTopology: true})
+const uri = "mongodb+srv://kyle:Zyn879544856@cluster-todo-app.jddizhq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-todo-app"
+mongoose.connect(uri)
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.error('MongoDB connection error:', err));
 

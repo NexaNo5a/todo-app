@@ -4,10 +4,9 @@ export const fetchTodos = async (userId, token) => {
     const response = await fetch(ALL_TODOS_URL(userId), {
         method: 'GET',
         headers: {
-            'Content type': 'application/json',
+            'Content-type': 'application/json',
             'Authorization': `Bearer ${token}`, // Assume token is available
         },
-        body:JSON.stringify(userId),
     })
     if (!response.ok) {
         throw new Error('Something wrong when get all todos!')
@@ -15,11 +14,11 @@ export const fetchTodos = async (userId, token) => {
     return response.json();
 }
 
-export const addTodo = async (todoContent, token) => {
-    const response = await fetch(TODO_URL, {
+export const addTodo = async (todoId,todoContent, token) => {
+    const response = await fetch(TODO_URL(todoId), {
         method: 'POST',
         headers: {
-            'Content type': 'application/json',
+            'Content-type': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
         body:JSON.stringify(todoContent),
@@ -30,11 +29,11 @@ export const addTodo = async (todoContent, token) => {
     return response.json();
 }
 
-export const updateTodo = async (todoContent, token) => {
-    const response = await fetch(TODO_URL, {
+export const updateTodo = async (todoId, todoContent, token) => {
+    const response = await fetch(TODO_URL(todoId), {
         method: 'PUT',
         headers: {
-            'Content type': 'application/json',
+            'Content-type': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
         body:JSON.stringify(todoContent),
@@ -46,13 +45,12 @@ export const updateTodo = async (todoContent, token) => {
 }
 
 export const deleteTodo = async (todoId, token) => {
-    const response = await fetch(TODO_URL, {
+    const response = await fetch(TODO_URL(todoId), {
         method: 'DELETE',
         headers: {
-            'Content type': 'application/json',
+            'Content-type': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
-        body:JSON.stringify(todoId),
     })
     if (!response.ok) {
         throw new Error('Something wrong when deleting a todo!')

@@ -5,26 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9349748d-d352-47c5-a8a1-ca0f420b5c1a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/EmptyState.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/SideBar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/TodoList.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/FlaggedPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/HomePage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/UpcomingPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/store/modalSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/store/store.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/api/todoApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/todoApi.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/api/userApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/userApi.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TodoItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Layout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TodoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TodoItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/HomePage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/LogInPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/LogInPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/SignUpPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/SignUpPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/routes/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/EmptyState.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/EmptyState.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/TodoItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TodoFormModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="JSX File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -91,7 +80,7 @@
       <workItem from="1719361665282" duration="3663000" />
       <workItem from="1719754085580" duration="7975000" />
       <workItem from="1720013976157" duration="20173000" />
-      <workItem from="1722311127754" duration="22928000" />
+      <workItem from="1722311127754" duration="25743000" />
     </task>
     <servers />
   </component>

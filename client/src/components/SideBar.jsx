@@ -34,7 +34,7 @@ const SideBar = () => {
         })));
     };
     return (
-        <div className="flex flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6 w-1/5">
+        <div className="flex  flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6 w-1/5">
             <div className="flex h-16 shrink-0 items-center">
                 <img alt="Your Company" src="https://tailwindui.com/img/logos/mark.svg?color=white" className="h-8 w-auto" />
             </div>

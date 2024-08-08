@@ -28,13 +28,12 @@ const HomePage = ({userId, token}) => {
     },[userId, token])
     return (
         <>
-            <div className="flex min-h-screen">
-                <div className="flex flex-grow items-center justify-center">
+            <div className="flex-grow flex ">
                     {todos.length > 0
                         ? <TodoList todos={todos} />
                         : <EmptyState />
                     }
-                </div>
+
             </div>
         </>
     )

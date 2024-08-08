@@ -5,7 +5,7 @@ import {useDispatch} from "react-redux";
 const EmptyState = () => {
     const dispatch = useDispatch();
     return (
-        <div className="text-center">
+        <div className="text-center flex-grow justify-center items-center flex flex-col">
             <svg
                 fill="none"
                 stroke="currentColor"

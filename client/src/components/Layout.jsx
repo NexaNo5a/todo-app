@@ -5,12 +5,17 @@ import TodoFormModal from "./TodoFormModal";
 
 const Layout = () => {
     return (
-        <div className="flex">
+        <div className="flex min-h-screen  relative">
             <SideBar />
-            <div className="flex-grow">
-                <TodoFormModal />
-                <Outlet />
+
+            <div className="flex flex-grow relative z-10">
+                <Outlet/>
+
+                    <TodoFormModal/>
+
+
             </div>
+
         </div>
     );
 };

@@ -28,8 +28,8 @@ const HomePage = ({userId, token}) => {
     },[userId, token])
     return (
         <>
-            <div className="flex-grow flex ">
-                    {todos.length > 0
+            <div className="flex-grow flex items-center justify-center overflow-y-auto ">
+                    {todos.length === 0
                         ? <TodoList todos={todos} />
                         : <EmptyState />
                     }

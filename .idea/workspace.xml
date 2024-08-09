@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9349748d-d352-47c5-a8a1-ca0f420b5c1a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/components/TodoEditItem.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/TodoShowItem.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/EmptyState.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/EmptyState.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Layout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/SideBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SideBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TodoFormModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TodoFormModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/FlaggedPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/FlaggedPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/TodoList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TodoList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/HomePage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/UpcomingPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/UpcomingPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/modalSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/modalSlice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +80,7 @@
       <workItem from="1719754085580" duration="7975000" />
       <workItem from="1720013976157" duration="20173000" />
       <workItem from="1722311127754" duration="26640000" />
-      <workItem from="1723104626467" duration="14031000" />
+      <workItem from="1723104626467" duration="21079000" />
     </task>
     <servers />
   </component>

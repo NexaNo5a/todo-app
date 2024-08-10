@@ -119,7 +119,7 @@ const TodoList = ({todos}) => {
     return (
         <ul role="list" className="divide-y divide-gray-100 w-1/2 relative">
             {todoss.map((todo) => (
-                <li key={todo.id} className="flex items-center justify-between gap-x-6 py-5 " onClick={() => dispatch(openItem())}>
+                <li key={todo.id} className="flex items-center justify-between gap-x-6 py-5 hover:cursor-pointer" onClick={() => dispatch(openItem())}>
                     <div className="min-w-0">
                         <div className="flex items-start gap-x-3">
                             <p className="text-sm font-semibold leading-6 text-gray-900">{todo.name}</p>
@@ -142,7 +142,7 @@ const TodoList = ({todos}) => {
                             <p className="truncate">Created by {todo.createdBy}</p>
                         </div>
                     </div>
-                    <div className="flex flex-none items-center gap-x-4 " onClick={(e)=>{e.stopPropagation()}}>
+                    <div className="flex flex-none items-center gap-x-4 hover:bg-gray-50 rounded-md p-1" onClick={(e)=>{e.stopPropagation()}}>
 
                         <Menu as="div" className="relative flex-none">
                             <MenuButton className="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900">

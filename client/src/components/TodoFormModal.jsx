@@ -34,13 +34,24 @@ const TodoFormModal = () => {
     const [labelled, setLabelled] = useState(labels[0])
     const [dated, setDated] = useState(dueDates[0])
     if (!isOpen) return null;
-
+    const handleClose = (e) => {
+        if (e.target.id === "modal-overlay") {
+            dispatch(closeModal());
+        }
+    }
     return (
         <>
-            <div className="flex m-auto inset-x-40 pt-20 absolute z-50">
+            <div
+                id="modal-overlay"
+                onClick={handleClose}
+                className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50"
+            >
+            <div className="flex m-auto inset-x-40 pt-20 absolute z-50"
+                onClick={(e) => e.stopPropagation()}
+            >
                 <form action="#" className="relative flex flex-grow">
                     <div
-                        className="overflow-hidden flex-grow rounded-lg border border-gray-300 shadow-sm focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
+                        className="overflow-hidden flex-grow rounded-lg border border-gray-100 shadow-sm bg-white focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
                         <label htmlFor="title" className="sr-only">
                             Title
                         </label>
@@ -232,12 +243,21 @@ const TodoFormModal = () => {
                                     className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                     onClick={() => dispatch(closeModal())}
                                 >
+                                    Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    onClick={() => dispatch(closeModal())}
+                                >
                                     Create
                                 </button>
+
                             </div>
                         </div>
                     </div>
                 </form>
+            </div>
             </div>
         </>
     );

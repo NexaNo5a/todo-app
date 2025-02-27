@@ -1,42 +1,56 @@
 import {LOGIN_URL, REGISTER_URL, USER_PROFILE_URL, UPDATE_USER_PROFILE_URL} from "./config";
 
 export const loginUser = async (email, password) => {
-    const response = await fetch(LOGIN_URL, {
-        method: 'POST',
-        headers:{
-            'Content type': 'application/json'
-        },
-        body:JSON.stringify({email, password}),
-    })
-    if (!response.ok) {
-        throw new Error('Something wrong when login!')
+    try{
+        const response = await fetch(LOGIN_URL, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({email, password}),
+        })
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || `Code: ${response.status}`)
+        }
+        return response.json();
+    } catch (err) {
+        throw err; //pass err to component
     }
-    return response.json();
 }
-export const registerUser = async (email, password, username) => {
-    const response = await fetch(REGISTER_URL, {
-        method: 'POST',
-        headers:{
-            'Content type': 'application/json'
-        },
-        body:JSON.stringify({email, password, username}),
-    })
-    if (!response.ok) {
-        throw new Error('Something wrong when login!')
+export const registerUser = async (username, email, password) => {
+    try{
+        const response = await fetch(REGISTER_URL, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({username, email, password}),
+        })
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || `Code: ${response.status}`)
+        }
+        return response.json();
+    } catch (err) {
+        throw err; //pass err to component
     }
-    return response.json();
 }
 export const fetchUserProfile = async (userId, token) => {
-    const response = await fetch(USER_PROFILE_URL(userId), {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`, // Assume token is available
-        },
-    });
-
-    if (!response.ok) {
-        throw new Error('Register failed!');
+    try{
+        const response = await fetch(USER_PROFILE_URL(userId), {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`, // Assume token is available
+            },
+        });
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || `Code: ${response.status}`)
+        }
+        return response.json();
+    } catch (err) {
+        throw err; //pass err to component
     }
 
-    return response.json();
 };

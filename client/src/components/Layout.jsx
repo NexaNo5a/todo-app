@@ -8,12 +8,12 @@ const Layout = () => {
     return (
         <div className="flex h-screen  relative">
             <SideBar />
-            <div className="flex flex-grow relative z-10">
-                <TodoEditItem />
-                <TodoFormModal/>
-                <Profile />
+            <div className="flex flex-grow relative">
                 <Outlet/>
             </div>
+            <TodoEditItem />
+            <TodoFormModal/>
+            <Profile />
         </div>
     );
 };

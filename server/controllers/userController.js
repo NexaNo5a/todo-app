@@ -1,7 +1,7 @@
 
-const { User } = require('../models/User')
-const { bcrypt, hash} = require('bcryptjs')
-const { jwt } = require('jsonwebtoken')
+const User = require('../models/User');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const registerUser = async (req, res) => {
     const { username, email, password} = req.body;
     const salt = await bcrypt.genSalt(10);

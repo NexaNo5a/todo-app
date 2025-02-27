@@ -1,37 +1,38 @@
 import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
-import {fetchTodos, addTodo, updateTodo, deleteTodo} from "../api/todoApi";
-import SideBar from "../components/SideBar";
+import {fetchTodos} from "../api/todoApi";
 import TodoList from "../components/TodoList";
+import { setTodos } from '../store/todoSlice';
 import EmptyState from "../components/EmptyState";
+import { useSelector, useDispatch} from "react-redux";
 
-const HomePage = ({userId, token}) => {
-    const [taskname, setTaskname] = useState("");
-    const [description, setDescription] = useState("");
-    const [duedate, setDuedate] = useState("");
-    const [location, setLocation] = useState("");
-    const [tag, setTag] = useState("");
-    const [todos, setTodos] = useState([]);
+const HomePage = () => {
+
+    const { userId, token } = useSelector(state => state.auth);
+
+    const todos = useSelector(state => state.todo.items); // 从 Redux 获取
+    const dispatch = useDispatch();
     useEffect(() => {
+        if (!userId || !token) return;
         const loadTodos = async () => {
             try {
                 const response = await fetchTodos(userId, token);
-                const todos = response.data;
-                setTodos(todos);
+                console.log('Fetch todos: ----', response.data)
+                dispatch(setTodos(response.data));
             } catch (err) {
                 console.error('Error fetching todos', err);
             }
         };
         loadTodos().catch(err => {
-            console.error("Unknown error",err);
-        })
-    },[userId, token])
+            console.error('Unhandled promise rejection in loadTodos', err);
+        });
+    },[userId, token,dispatch])
     return (
         <>
             <div className="flex-grow flex items-center justify-center overflow-y-auto ">
                     {todos.length === 0
-                        ? <TodoList todos={todos} />
-                        : <EmptyState />
+                        ?   <EmptyState />
+                        :  <TodoList todos={todos} />
                     }
 
             </div>

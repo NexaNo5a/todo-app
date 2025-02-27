@@ -50,35 +50,28 @@ export default function Profile() {
             <div
                 id="modal-overlay"
                 onClick={handleClose}
-                className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50"
+                className="fixed inset-0  bg-opacity-50 z-50"
             >
 
-                    <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm/6 shadow-lg ring-1 ring-gray-900/5 lg:max-w-3xl"
+                    <div className="relative top-10 left-2 max-w-xs  rounded-3xl bg-white text-sm/6 shadow-lg ring-1 ring-gray-900/5 "
                          onClick={(e) => e.stopPropagation()}
                     >
-                        <div className="grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2">
+                        <div className="grid grid-cols-1  gap-y-2">
                             {solutions.map((item) => (
-                                <div key={item.name} className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-                                    <div className="mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                        <item.icon aria-hidden="true" className="size-6 text-gray-600 group-hover:text-indigo-600" />
+                                <div key={item.name} className="group relative flex gap-x-2 rounded-lg p-2 hover:bg-gray-50">
+                                    <div className="mt-1 flex size-5 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                                        <item.icon aria-hidden="true" className="size-4 text-gray-600 group-hover:text-indigo-600" />
                                     </div>
-                                    <div>
+                                    <div className="items-center justify-center" >
                                         <a href={item.href} className="font-semibold text-gray-900">
                                             {item.name}
                                             <span className="absolute inset-0" />
                                         </a>
-                                        <p className="mt-1 text-gray-600">{item.description}</p>
                                     </div>
                                 </div>
                             ))}
                         </div>
-                        <div className="bg-gray-50 px-8 py-6">
-                            <div className="flex items-center gap-x-3">
-                                <h3 className="text-sm/6 font-semibold text-gray-900">Enterprise</h3>
-                                <p className="rounded-full bg-indigo-600/10 px-2.5 py-1.5 text-xs font-semibold text-indigo-600">New</p>
-                            </div>
-                            <p className="mt-2 text-sm/6 text-gray-600">Empower your entire team with even more advanced tools.</p>
-                        </div>
+
                     </div>
             </div>
         </>

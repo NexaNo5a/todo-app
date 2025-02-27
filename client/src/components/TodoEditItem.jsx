@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
     Dialog,
     DialogBackdrop,
@@ -13,6 +13,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {closeItem, closeModal} from "../store/modalSlice";
 import {TagIcon, UserCircleIcon} from "@heroicons/react/16/solid";
 import classNames from "classnames";
+import {updateTodo} from "../api/todoApi";
+import { updateTodo as updateTodoAction} from '../store/todoSlice'
 
 const assignees = [
     { name: 'Unassigned', value: null },
@@ -34,12 +36,39 @@ const dueDates = [
     { name: 'Today', value: 'today' },
     // More items...
 ]
+
+//open selected item on todolist
 export default function TodoEditItem () {
+
+
     const isItemOpen = useSelector((state) => state.modal.isItemOpen);
+    const { userId, token } = useSelector((state) => state.auth);
+    const selectedTodo = useSelector((state) => state.modal.selectedTodo);
     const dispatch = useDispatch();
     const [assigned, setAssigned] = useState(assignees[0])
     const [labelled, setLabelled] = useState(labels[0])
     const [dated, setDated] = useState(dueDates[0])
+    const [title, setTitle] = useState( '');
+    const [description, setDescription] = useState( '');
+    useEffect(() => {
+        if (selectedTodo) {
+            setTitle(selectedTodo.title || '');
+            setDescription(selectedTodo.description || '');
+        }
+    }, [selectedTodo]);
+    const handleSave = async (e) => {
+        try {
+            const todoData = { title, description };
+            const response = await updateTodo(selectedTodo._id, token, todoData);
+            console.log('UPDATED DATA: ----- ', response);
+            dispatch(updateTodoAction(response));
+            dispatch(closeItem());
+        } catch (err) {
+            console.error(err.message)
+        }
+
+
+    }
     if (!isItemOpen) return null;
 
     return (
@@ -77,7 +106,8 @@ export default function TodoEditItem () {
                                             id="title"
                                             name="title"
                                             type="text"
-                                            placeholder="Title"
+                                            value = {title}
+                                            onChange={e => {setTitle(e.target.value)}}
                                             className="block w-full border-0 pt-2.5 text-lg font-medium placeholder:text-gray-400 focus:ring-0"
                                         />
                                         <label htmlFor="description" className="sr-only">
@@ -87,9 +117,11 @@ export default function TodoEditItem () {
                                             id="description"
                                             name="description"
                                             rows={2}
-                                            placeholder="Write a description..."
+                                            value= {description}
+                                            onChange={e => {setDescription(e.target.value)}}
                                             className="block w-full resize-none border-0 py-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                            defaultValue={''}
+
+
                                         />
 
                                         {/* Spacer element to match the height of the toolbar */}
@@ -242,7 +274,7 @@ export default function TodoEditItem () {
 
                             <button
                                 type="button"
-                                onClick={() => dispatch(closeItem())}
+                                onClick={handleSave}
                                 className=" inline-flex w-full justify-center rounded-md bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
                             >
                                 Save

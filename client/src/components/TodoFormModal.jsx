@@ -5,6 +5,8 @@ import {Label, Listbox, ListboxButton, ListboxOption, ListboxOptions} from "@hea
 import {PaperClipIcon, TagIcon, UserCircleIcon} from "@heroicons/react/16/solid";
 import {CalendarIcon} from "@heroicons/react/24/outline";
 import classNames from "classnames";
+import { addTodo} from "../api/todoApi";
+import { addTodo as addTodoAction } from '../store/todoSlice';
 
 
 const labels = [
@@ -27,13 +29,25 @@ const assignees = [
     },
     // More items...
 ]
+//Add todo popup.
 const TodoFormModal = () => {
     const isOpen = useSelector((state) => state.modal.isOpen);
+    const { userId, token } = useSelector(state => state.auth)
     const dispatch = useDispatch();
-    const [assigned, setAssigned] = useState(assignees[0])
-    const [labelled, setLabelled] = useState(labels[0])
-    const [dated, setDated] = useState(dueDates[0])
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
     if (!isOpen) return null;
+    const handleCreate = async (e) => {
+        e.preventDefault();
+        const todoData = { title, description};
+        try {
+            const response = await addTodo(userId, token, todoData);
+            dispatch(closeModal())
+            dispatch(addTodoAction(response))
+        } catch (err) {
+            console.error(err.message)
+        }
+    }
     const handleClose = (e) => {
         if (e.target.id === "modal-overlay") {
             dispatch(closeModal());
@@ -60,6 +74,7 @@ const TodoFormModal = () => {
                             name="title"
                             type="text"
                             placeholder="Title"
+                            onChange={(e) => {setTitle(e.target.value)}}
                             className="block w-full border-0 pt-2.5 text-lg font-medium placeholder:text-gray-400 focus:ring-0"
                         />
                         <label htmlFor="description" className="sr-only">
@@ -70,6 +85,7 @@ const TodoFormModal = () => {
                             name="description"
                             rows={2}
                             placeholder="Write a description..."
+                            onChange={(e) => {setDescription(e.target.value)}}
                             className="block w-full resize-none border-0 py-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                             defaultValue={''}
                         />
@@ -91,139 +107,10 @@ const TodoFormModal = () => {
                     <div className="absolute inset-x-px bottom-0">
                         {/* Actions: These are just examples to demonstrate the concept, replace/wire these up however makes sense for your project. */}
                         <div className="flex flex-nowrap justify-end space-x-2 px-2 py-2 sm:px-3">
-                            <Listbox as="div" value={assigned} onChange={setAssigned} className="flex-shrink-0">
-                                <Label className="sr-only">Assign</Label>
-                                <div className="relative">
-                                    <ListboxButton
-                                        className="relative inline-flex items-center whitespace-nowrap rounded-full bg-gray-50 px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 sm:px-3">
-                                        {assigned.value === null ? (
-                                            <UserCircleIcon aria-hidden="true"
-                                                            className="h-5 w-5 flex-shrink-0 text-gray-300 sm:-ml-1"/>
-                                        ) : (
-                                            <img alt="" src={assigned.avatar}
-                                                 className="h-5 w-5 flex-shrink-0 rounded-full"/>
-                                        )}
 
-                                        <span
-                                            className={classNames(
-                                                assigned.value === null ? '' : 'text-gray-900',
-                                                'hidden truncate sm:ml-2 sm:block',
-                                            )}
-                                        >
-          {assigned.value === null ? 'Assign' : assigned.name}
-        </span>
-                                    </ListboxButton>
 
-                                    <ListboxOptions
-                                        transition
-                                        className="absolute right-0 z-10 mt-1 max-h-56 w-52 overflow-auto rounded-lg bg-white py-3 text-base shadow ring-1 ring-black ring-opacity-5 focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in sm:text-sm"
-                                    >
-                                        {assignees.map((assignee) => (
-                                            <ListboxOption
-                                                key={assignee.value}
-                                                value={assignee}
-                                                className="relative cursor-default select-none bg-white px-3 py-2 data-[focus]:bg-gray-100"
-                                            >
-                                                <div className="flex items-center">
-                                                    {assignee.avatar ? (
-                                                        <img alt="" src={assignee.avatar}
-                                                             className="h-5 w-5 flex-shrink-0 rounded-full"/>
-                                                    ) : (
-                                                        <UserCircleIcon aria-hidden="true"
-                                                                        className="h-5 w-5 flex-shrink-0 text-gray-400"/>
-                                                    )}
 
-                                                    <span
-                                                        className="ml-3 block truncate font-medium">{assignee.name}</span>
-                                                </div>
-                                            </ListboxOption>
-                                        ))}
-                                    </ListboxOptions>
-                                </div>
-                            </Listbox>
 
-                            <Listbox as="div" value={labelled} onChange={setLabelled} className="flex-shrink-0">
-                                <Label className="sr-only">Add a label</Label>
-                                <div className="relative">
-                                    <ListboxButton
-                                        className="relative inline-flex items-center whitespace-nowrap rounded-full bg-gray-50 px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 sm:px-3">
-                                        <TagIcon
-                                            aria-hidden="true"
-                                            className={classNames(
-                                                labelled.value === null ? 'text-gray-300' : 'text-gray-500',
-                                                'h-5 w-5 flex-shrink-0 sm:-ml-1',
-                                            )}
-                                        />
-                                        <span
-                                            className={classNames(
-                                                labelled.value === null ? '' : 'text-gray-900',
-                                                'hidden truncate sm:ml-2 sm:block',
-                                            )}
-                                        >
-          {labelled.value === null ? 'Label' : labelled.name}
-        </span>
-                                    </ListboxButton>
-
-                                    <ListboxOptions
-                                        transition
-                                        className="absolute right-0 z-10 mt-1 max-h-56 w-52 overflow-auto rounded-lg bg-white py-3 text-base shadow ring-1 ring-black ring-opacity-5 focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in sm:text-sm"
-                                    >
-                                        {labels.map((label) => (
-                                            <ListboxOption
-                                                key={label.value}
-                                                value={label}
-                                                className="relative cursor-default select-none bg-white px-3 py-2 data-[focus]:bg-gray-100"
-                                            >
-                                                <div className="flex items-center">
-                                                    <span className="block truncate font-medium">{label.name}</span>
-                                                </div>
-                                            </ListboxOption>
-                                        ))}
-                                    </ListboxOptions>
-                                </div>
-                            </Listbox>
-
-                            <Listbox as="div" value={dated} onChange={setDated} className="flex-shrink-0">
-                                <Label className="sr-only">Add a due date</Label>
-                                <div className="relative">
-                                    <ListboxButton
-                                        className="relative inline-flex items-center whitespace-nowrap rounded-full bg-gray-50 px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 sm:px-3">
-                                        <CalendarIcon
-                                            aria-hidden="true"
-                                            className={classNames(
-                                                dated.value === null ? 'text-gray-300' : 'text-gray-500',
-                                                'h-5 w-5 flex-shrink-0 sm:-ml-1',
-                                            )}
-                                        />
-                                        <span
-                                            className={classNames(
-                                                dated.value === null ? '' : 'text-gray-900',
-                                                'hidden truncate sm:ml-2 sm:block',
-                                            )}
-                                        >
-          {dated.value === null ? 'Due date' : dated.name}
-        </span>
-                                    </ListboxButton>
-
-                                    <ListboxOptions
-                                        transition
-                                        className="absolute right-0 z-10 mt-1 max-h-56 w-52 overflow-auto rounded-lg bg-white py-3 text-base shadow ring-1 ring-black ring-opacity-5 focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in sm:text-sm"
-                                    >
-                                        {dueDates.map((dueDate) => (
-                                            <ListboxOption
-                                                key={dueDate.value}
-                                                value={dueDate}
-                                                className="relative cursor-default select-none bg-white px-3 py-2 data-[focus]:bg-gray-100"
-                                            >
-                                                <div className="flex items-center">
-                                                <span
-                                                    className="block truncate font-medium">{dueDate.name}</span>
-                                                </div>
-                                            </ListboxOption>
-                                        ))}
-                                    </ListboxOptions>
-                                </div>
-                            </Listbox>
                         </div>
                         <div
                             className="flex items-center justify-between space-x-3 border-t border-gray-200 px-2 py-2 sm:px-3">
@@ -248,7 +135,7 @@ const TodoFormModal = () => {
                                 <button
                                     type="submit"
                                     className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                    onClick={() => dispatch(closeModal())}
+                                    onClick={handleCreate}
                                 >
                                     Create
                                 </button>

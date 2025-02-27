@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {fetchTodos, addTodo, updateTodo, deleteTodo} from "../api/todoApi";
 import SideBar from "../components/SideBar";
 import TodoList from "../components/TodoList";
+import EmptyState from "../components/EmptyState";
 
 const FlaggedPage = ({userId, token}) => {
     const [taskname, setTaskname] = useState("");
@@ -28,7 +29,7 @@ const FlaggedPage = ({userId, token}) => {
     return (
         <>
                 <div className="flex flex-grow items-center justify-center">
-                    <p>Flagged PAGE RENDERED!!!!!!!</p>
+                    <EmptyState />
                 </div>
         </>
     )

@@ -3,20 +3,23 @@ const router = express.Router();
 const Todo = require('../models/Todo');
 
 //get all todos
-router.get('/', async (req, res) => {
+router.get('/:userId', async (req, res) => {
     try {
-        const todos = await Todo.find();
-        res.json(todos);
+        const userId = req.params.userId;
+        const todos = await Todo.find({userId});
+        res.json({data : todos});
     }catch (err) {
+        console.error('Error fetching todos:', err);
         res.status(500).json({ message: err.message});
     }
 });
 
 //create a new todo
-router.post('/', async (req, res) => {
+router.post('/:userId', async (req, res) => {
     const todo = new Todo({
+        userId: req.params.userId,
         title: req.body.title,
-        completed: req.body.completed,
+        description: req.body.description,
     })
     try {
         const newTodo = await todo.save();
@@ -27,10 +30,14 @@ router.post('/', async (req, res) => {
 });
 
 //update a todo
-router.put('/:id', async (req, res) => {
+router.put('/:todoId', async (req, res) => {
     try{
-        const updateTodo = await Todo.findByIdAndUpdate(req.params.id, req.body, {new: true});
-        res.json(updateTodo);
+        const updatedTodo = await Todo.findByIdAndUpdate(
+            req.params.todoId, // 修正为 todoId
+            { ...req.body, updatedAt: Date.now() }, // 手动更新 updatedAt，或依赖 timestamps
+            { new: true } // 返回更新后的文档
+        );
+        res.json(updatedTodo);
     }catch (err) {
         res.status(400).json({message: err.message})
     }

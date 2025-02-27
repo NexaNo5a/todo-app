@@ -1,9 +1,16 @@
 const mongoose = require('mongoose');
 
 const TodoSchema = new mongoose.Schema({
+    userId: {
+        type: String,
+        required: true,
+    },
     title: {
         type: String,
         required: true,
+    },
+    description: {
+        type: String,
     },
     completed: {
         type: Boolean,
@@ -17,6 +24,6 @@ const TodoSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-})
+},{ timestamps: true })
 
 module.exports = mongoose.model('Todo', TodoSchema);

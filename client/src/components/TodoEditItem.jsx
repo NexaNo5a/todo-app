@@ -13,8 +13,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {closeItem, closeModal} from "../store/modalSlice";
 import {TagIcon, UserCircleIcon} from "@heroicons/react/16/solid";
 import classNames from "classnames";
-import {updateTodo} from "../api/todoApi";
-import { updateTodo as updateTodoAction} from '../store/todoSlice'
+import {deleteTodo, updateTodo} from "../api/todoApi";
+import { updateTodo as updateTodoAction, deleteTodo as deleteTodoAction} from '../store/todoSlice'
 
 const assignees = [
     { name: 'Unassigned', value: null },
@@ -66,9 +66,18 @@ export default function TodoEditItem () {
         } catch (err) {
             console.error(err.message)
         }
-
-
     }
+    const handleDelete = async (e) => {
+        try {
+            const response = await deleteTodo(selectedTodo._id, token);
+            console.log('Delete todo: ----- ', response);
+            dispatch(deleteTodoAction(selectedTodo._id));
+            dispatch(closeItem());
+        } catch (err) {
+            console.error(err.message)
+        }
+    }
+
     if (!isItemOpen) return null;
 
     return (
@@ -286,7 +295,13 @@ export default function TodoEditItem () {
                             >
                                 Cancel
                             </button>
-
+                            <button
+                                type="button"
+                                onClick={handleDelete}
+                                className=" mt-3 inline-flex w-full justify-center rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset  ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                            >
+                                Delete
+                            </button>
                         </div>
                     </DialogPanel>
                 </div>

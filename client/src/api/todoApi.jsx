@@ -75,7 +75,7 @@ export const deleteTodo = async (todoId, token) => {
             const errorData = await response.json();
             throw new Error(errorData.message || `Code: ${response.status}`)
         }
-        return response.json();
+        return { success: true, todoId };
     } catch (err) {
         console.error('Delete todos error', err.message)
         throw err; //pass err to component

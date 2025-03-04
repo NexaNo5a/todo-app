@@ -20,8 +20,6 @@ const verifyPassword = async (req, res, next) => {
 
 const validateAuthInput = (req, res, next) => {
     const { username, email, password } = req.body;
-    console.log(username)
-    console.log(req.path)
     if (!email || !password || (req.path === '/register' && !username)) {
         return res.status(400).json({ message: 'Missing required fields' });
     }

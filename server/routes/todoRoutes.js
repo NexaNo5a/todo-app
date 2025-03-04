@@ -44,9 +44,9 @@ router.put('/:todoId', async (req, res) => {
 });
 
 //delete a todo
-router.delete('/:id', async (req, res) => {
+router.delete('/:todoId', async (req, res) => {
     try {
-        await Todo.findByIdAndDelete(req.params.id);
+        await Todo.findByIdAndDelete(req.params.todoId);
         res.json({message:'Todo deleted'});
     } catch (err) {
         res.status(500).json({message: err.message});

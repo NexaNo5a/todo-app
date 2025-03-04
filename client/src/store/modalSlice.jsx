@@ -1,4 +1,4 @@
-// src/store/modalSlice.js
+// src/store/modalSlice.jsx
 import { createSlice } from '@reduxjs/toolkit';
 import {store} from "./store";
 

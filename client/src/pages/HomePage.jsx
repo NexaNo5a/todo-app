@@ -34,7 +34,6 @@ const HomePage = () => {
                         ?   <EmptyState />
                         :  <TodoList todos={todos} />
                     }
-
             </div>
         </>
     )

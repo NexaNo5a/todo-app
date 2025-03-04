@@ -14,7 +14,7 @@ const LogInPage = () => {
         try {
             const data = await loginUser(email, password);
             console.log('Login success! ---- ',data);
-            dispatch(setAuth({userId: data.user.id, token: data.token}))
+            dispatch(setAuth({userId: data.user.id, token: data.token, isAuthenticated:true}))
             navigate('/home');
         } catch (err) {
             console.log('Login failed', err.message);

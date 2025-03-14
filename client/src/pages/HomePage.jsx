@@ -9,16 +9,16 @@ import { useSelector, useDispatch} from "react-redux";
 const HomePage = () => {
 
     const { userId, token } = useSelector(state => state.auth);
-
+    const [isLoading, setIsLoading] = useState(true);
     const todos = useSelector(state => state.todo.items); // 从 Redux 获取
     const dispatch = useDispatch();
     useEffect(() => {
-        if (!userId || !token) return;
         const loadTodos = async () => {
             try {
                 const response = await fetchTodos(userId, token);
                 console.log('Fetch todos: ----', response.data)
                 dispatch(setTodos(response.data));
+                setIsLoading(false)
             } catch (err) {
                 console.error('Error fetching todos', err);
             }
@@ -27,6 +27,9 @@ const HomePage = () => {
             console.error('Unhandled promise rejection in loadTodos', err);
         });
     },[userId, token,dispatch])
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
     return (
         <>
             <div className="flex-grow flex items-center justify-center overflow-y-auto ">

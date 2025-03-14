@@ -15,10 +15,10 @@ import {UserCircleIcon} from "@heroicons/react/16/solid";
 
 
 const navigation = [
-    { type:'create', name: 'Add Task', icon:PlusIcon, count:'40', current: false},
-    { name: 'Today', href: '/home', icon: HomeIcon, count: '5', current: true },
+    { type:'create', name: 'Add Task', icon:PlusIcon, count:'', current: false},
+    { name: 'Today', href: '/home', icon: HomeIcon, count: '', current: true },
     { name: 'Upcoming', href: '/upcoming', icon: UsersIcon, current: false },
-    { name: 'Flagged task', href: '/flagged', icon: FolderIcon, count: '12', current: false },
+    { name: 'Flagged task', href: '/flagged', icon: FolderIcon, count: '', current: false },
 
 ]
 

@@ -24,15 +24,10 @@ export const modalSlice = createSlice({
         closeItem: (state) => {
             state.isItemOpen = false;
         },
-        openProfile: (state) => {
-            state.isProfileOpen = true;
-        },
-        closeProfile: (state) => {
-            state.isProfileOpen = false;
-        }
+
     },
 });
 
-export const { openModal, closeModal, openItem, closeItem, openProfile, closeProfile } = modalSlice.actions;
+export const { openModal, closeModal, openItem, closeItem, } = modalSlice.actions;
 
 export default modalSlice.reducer;

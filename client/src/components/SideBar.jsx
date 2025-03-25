@@ -8,10 +8,12 @@ import {
     PlusIcon
 } from '@heroicons/react/24/outline'
 import {useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { useDispatch} from "react-redux";
 import { openModal, openProfile} from "../store/modalSlice";
 import {UserCircleIcon} from "@heroicons/react/16/solid";
+import UserMenu from "./UserMenu";
+import {clearAuth} from "../store/authSlice";
 
 
 const navigation = [
@@ -27,8 +29,21 @@ function classNames(...classes) {
 }
 
 const SideBar = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [navItems, setNavItems] = useState(navigation);
+    const [open, setOpen] = useState(false);
+
+    const handleLogOut = async () => {
+        try {
+            dispatch(clearAuth());
+            localStorage.removeItem('token');
+            navigate('/login')
+        } catch (err) {
+            console.error('Logout failed:', err)
+        }
+
+    }
     const handleNavClick = (clickedItem) => {
         setNavItems(navItems.map(item => ({
             ...item,
@@ -36,21 +51,12 @@ const SideBar = () => {
         })));
     };
     return (
-        <div className="flex  flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6 w-1/5">
-            <div className="flex h-16 shrink-0 items-center -mx-2 space-y-1">
-                <button
-                    onClick={() => {dispatch(openProfile());
-
-                    }}
-                    className="group flex w-full items-center gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-indigo-200 hover:bg-indigo-700 hover:text-white"
-                >
-                    <UserCircleIcon
-                        aria-hidden="true"
-                        className="h-6 w-6 shrink-0 text-indigo-200 group-hover:text-white"
-                    />
-                    <span>username</span>
-                </button>
-            </div>
+        <div className="flex flex-col gap-y-5  bg-indigo-600 px-6 w-1/5">
+            <UserMenu
+            username={'noname'}
+            onSettings={''}
+            onLogout={handleLogOut}
+            />
             <nav className="flex flex-1 flex-col">
                 <ul role="list" className="flex flex-1 flex-col gap-y-7">
                     <li>

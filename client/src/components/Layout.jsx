@@ -1,9 +1,10 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import SideBar from './SideBar';
-import TodoFormModal from "./TodoFormModal";
-import TodoEditItem from "./TodoEditItem";
-import Profile from "./Profile";
+import TodoFormModal from "./AddTodoModal";
+import ViewTodoModal from "./ViewTodoModal";
+import UserMenu from "./UserMenu";
+import AddTodoModal from "./AddTodoModal";
 const Layout = () => {
     return (
         <div className="flex h-screen  relative">
@@ -11,9 +12,8 @@ const Layout = () => {
             <div className="flex flex-grow relative">
                 <Outlet/>
             </div>
-            <TodoEditItem />
-            <TodoFormModal/>
-            <Profile />
+            <ViewTodoModal />
+            <AddTodoModal/>
         </div>
     );
 };

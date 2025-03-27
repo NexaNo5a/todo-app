@@ -3,33 +3,34 @@ import {
     Dialog,
     DialogBackdrop,
     DialogPanel,
-    Transition,
 } from '@headlessui/react'
 import {useDispatch, useSelector} from "react-redux";
-import {closeItem, closeModal} from "../store/modalSlice";
+import {closeItem, closeModal, openItem} from "../store/modalSlice";
 import {deleteTodo, updateTodo} from "../api/todoApi";
 import { updateTodo as updateTodoAction, deleteTodo as deleteTodoAction} from '../store/todoSlice'
 import TodoToggleButton from "./TodoToggleButton";
+import {useToggleTodo} from "./useToggleTodo";
 
 
-//open selected item on todolist
 export default function ViewTodoModal () {
-
-
-    const isItemOpen = useSelector((state) => state.modal.isItemOpen);
-    const { userId, token } = useSelector((state) => state.auth);
-    const selectedTodo = useSelector((state) => state.modal.selectedTodo);
-    const dispatch = useDispatch();
-
     const [title, setTitle] = useState( '');
     const [description, setDescription] = useState( '');
-    const [completed, setCompleted] = useState(false)
+    const toggle = useToggleTodo();
+    const isItemOpen = useSelector((state) => state.modal.isItemOpen);
+    const { userId, token } = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
+    const selectedTodoId = useSelector((state) => state.modal.selectedTodoId);
+    const selectedTodo = useSelector((state) =>
+        state.todo.items.find((t) => t._id === selectedTodoId)
+    );
+
     useEffect(() => {
         if (selectedTodo) {
             setTitle(selectedTodo.title || '');
             setDescription(selectedTodo.description || '');
         }
     }, [selectedTodo]);
+    if (!selectedTodo) return null;
     const handleSave = async (e) => {
         try {
             const todoData = { title, description };
@@ -52,17 +53,12 @@ export default function ViewTodoModal () {
         }
     }
 
-    const handleToggle = async () => {
-        setCompleted(!completed)
-    }
-
     return (
         <Dialog open={isItemOpen} onClose={() => dispatch(closeItem())} className="relative z-10">
             <DialogBackdrop
                 transition
                 className="fixed inset-0 bg-gray-500/75 transition-opacity data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
             />
-
             <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
                 <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                     <DialogPanel
@@ -70,7 +66,7 @@ export default function ViewTodoModal () {
                         className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg sm:p-6 data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
                     >
                         <div className="flex items-start gap-4 mb-4">
-                            <TodoToggleButton completed={completed} onClick={handleToggle}/>
+                            <TodoToggleButton completed={selectedTodo.completed} onClick={(e) => toggle(selectedTodo)}/>
                             <div
                                 className="rounded-lg bg-white w-full outline-none outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                                 <label htmlFor="title" className="sr-only">

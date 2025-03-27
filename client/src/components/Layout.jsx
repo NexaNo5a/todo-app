@@ -5,6 +5,7 @@ import TodoFormModal from "./AddTodoModal";
 import ViewTodoModal from "./ViewTodoModal";
 import UserMenu from "./UserMenu";
 import AddTodoModal from "./AddTodoModal";
+import NotificationStack from "./NotificationStack";
 const Layout = () => {
     return (
         <div className="flex h-screen  relative">
@@ -14,6 +15,7 @@ const Layout = () => {
             </div>
             <ViewTodoModal />
             <AddTodoModal/>
+            <NotificationStack />
         </div>
     );
 };

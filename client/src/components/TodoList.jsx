@@ -1,9 +1,20 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid'
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {openItem, openModal} from "../store/modalSlice";
 import {useEffect, useState} from "react";
 import TodoToggleButton from "./TodoToggleButton";
+import {addTodo, deleteTodo, updateTodo} from "../api/todoApi";
+import {
+    addTodo as addTodoAction,
+    deleteTodo as deleteTodoAction,
+    revertCompleteStatus,
+    toggleCompleteStatus,
+    updateTodo as updateTodoAction
+} from "../store/todoSlice";
+import {useToggleTodo} from "./useToggleTodo";
+import {addNotification} from "../store/notificationSlice";
+
 
 
 
@@ -12,46 +23,96 @@ function classNames(...classes) {
 }
 
 const TodoList = ({todos}) => {
+    const [markedFadeOut, setMarkedFadeOut] = useState({});
+    const [pendingComplete, setPendingComplete] = useState({});
     const dispatch = useDispatch();
-    const [completed, setCompleted] = useState(false)
+    const { userId, token } = useSelector(state => state.auth)
+    const toggle = useToggleTodo();
+    const fadeOutAndDo = (todo, actionFn,type= 'generic') => {
+        setMarkedFadeOut((prev) => ({ ...prev, [todo._id]: true }));
+        if (type === 'complete') {
+            setPendingComplete((prev) => ({ ...prev, [todo._id]: true }));
+        }
+        setTimeout(() => {
+            actionFn();
+            setMarkedFadeOut((prev) => {
+                const copy = { ...prev };
+                delete copy[todo._id];
+                return copy;
+            });
+            setPendingComplete((prev) => {
+                const copy = { ...prev };
+                delete copy[todo._id];
+                return copy;
+            });
+        }, 300);
+    };
+    const visibleTodos = todos.filter(
+        (todo) => !todo.completed || markedFadeOut?.[todo._id]
+    );
     const handleEdit = (todo) => {
         console.log('Edit clicked todo:--------',todo)
         dispatch(openItem(todo))
     }
-    const handleDelete = (todo) => {
+    const handleDelete = async (todo) => {
+        fadeOutAndDo(todo, () => dispatch(deleteTodoAction(todo._id)),'delete');
+        dispatch(addNotification({
+            message: 'Todo deleted!',
+            actionLabel: 'Undo',
+            onAction: () => {
+                dispatch(addTodoAction(todo));
+                addTodo(userId, token, todo);
+            }
+        }))
+        const response = await deleteTodo(todo._id, token)
+        console.log('delete success!', response)
+    }
+    const handleComplete = (e,todo) => {
+        e.preventDefault()
+        fadeOutAndDo(todo, () => dispatch(toggleCompleteStatus(todo._id)),'complete');
+        dispatch(addNotification({
+            message: 'Todo completed!',
+            actionLabel: 'Undo',
+            onAction: () => dispatch(revertCompleteStatus(todo._id))
+        }))
+    }
 
-    }
-    const handleComplete = (todo) => {
-    setCompleted(!completed)
-    }
     useEffect(() => {
 
     },[todos])
     return (
         <ul role="list" className="divide-y divide-gray-100 w-1/2 relative">
-            {todos.map((todo) => (
-                <li key={todo._id}
-                    className="group flex items-center justify-between rounded-md p-2 gap-x-6 py-5  hover:cursor-pointer hover:bg-gray-50"
-                    onClick={() => handleEdit(todo)}>
-                    <div className="flex items-center gap-x-3 flex-1">
-                        <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                            <TodoToggleButton onClick={handleComplete} completed={completed}/>
-                        </div>
+            {visibleTodos.map((todo) => (
 
-                        <div className="min-w-0">
-                            <div className="flex items-start gap-x-3">
-                                <p className="text-sm font-semibold leading-6 text-gray-900">{todo.title}</p>
+                    <li key={todo._id}
+                        className={classNames(
+                            'transition-all duration-300',
+                            markedFadeOut?.[todo._id] ? 'opacity-0 scale-95' : 'opacity-100 scale-100',
+                            "group flex items-center justify-between rounded-md p-2 gap-x-6 py-5  hover:cursor-pointer hover:bg-gray-50"
 
+                        )} onClick={() =>handleEdit(todo)}>
+                        <div className="flex items-center gap-x-3 flex-1">
+                            <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                                <TodoToggleButton disabled={markedFadeOut[todo._id]}
+                                                  onClick={(e) => handleComplete(e,todo)}
+                                                  completed={pendingComplete[todo._id] || todo.completed}
+                                />
                             </div>
 
+                            <div className="min-w-0">
+                                <div className="flex items-start gap-x-3">
+                                    <p className="text-sm font-semibold leading-6 text-gray-900">{todo.title}</p>
+
+                                </div>
+
+                            </div>
                         </div>
-                    </div>
                         <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
 
                             <button
                                 onClick={(e) => {
                                     e.stopPropagation();
-                                    handleDelete(todo._id);
+                                    handleDelete(todo);
                                 }}
                                 className="text-red-500 hover:text-red-700"
                                 title="Delete"
@@ -65,7 +126,9 @@ const TodoList = ({todos}) => {
 
                             </button>
                         </div>
-                </li>
+                    </li>
+
+
             ))}
         </ul>
     )

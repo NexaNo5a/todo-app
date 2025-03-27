@@ -1,12 +1,14 @@
 import { CheckIcon } from '@heroicons/react/24/outline';
 
-export default function TodoToggleButton({ completed, onClick }) {
+export default function TodoToggleButton({ disabled, completed, onClick }) {
     const handleClick = (e) => {
         e.stopPropagation();
-        onClick();
+        onClick?.(e);
     };
     return (
         <button
+            title='Complete'
+            disabled={disabled}
             onClick={handleClick}
             className={`
         size-6 flex items-center justify-center rounded-full border 

@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage';
 import modalReducer from './modalSlice';
 import authReducer from './authSlice'
 import todoReducer from './todoSlice'
+import notificationReducer from "./notificationSlice";
 
 const persistConfig = {
     key: 'root',
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     auth: authReducer,
     todo: todoReducer,
     modal: modalReducer,
+    notification: notificationReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

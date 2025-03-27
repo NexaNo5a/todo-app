@@ -7,7 +7,7 @@ export const modalSlice = createSlice({
     initialState: {
         isOpen: false,
         isItemOpen: false,
-        selectedTodo: null,
+        selectedTodoId: null,
         isProfileOpen:false,
     },
     reducers: {
@@ -19,7 +19,7 @@ export const modalSlice = createSlice({
         },
         openItem: (state, action) => {
             state.isItemOpen = true;
-            state.selectedTodo = action.payload;
+            state.selectedTodoId = action.payload._id;
         },
         closeItem: (state) => {
             state.isItemOpen = false;
